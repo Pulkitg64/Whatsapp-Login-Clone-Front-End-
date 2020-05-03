@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet,ScrollView} from 'react-native';
 import PhoneNumber from '../components/PhoneNumber';
 import NavigationComponent from '../components/NavigationComponent';
 
 const HomeScreen = () => {
    return(
+	   <ScrollView>
    	<View style={styles.container} >
    	<View style={styles.ubg} >
    	<Text style={styles.text} >WhatsApp</Text>
@@ -14,6 +15,7 @@ const HomeScreen = () => {
    	<NavigationComponent content="Or connect with social account" nvgt="Password"/>
    	</View>
 	</View>
+	</ScrollView>
 	);
 };
 

@@ -1,37 +1,51 @@
 import React , {useState} from 'react';
 import {Text, View, StyleSheet, TextInput, Picker} from 'react-native';
 import {AntDesign} from '@expo/vector-icons';
-
+import RNPickerSelect from 'react-native-picker-select';
 
 const PhoneNumber = () => {
 	const [selectedValue, setSelectedValue] = useState("+94");
+	
+	//var data = [["+91", "+92", "+93", "+94"]]
    return(
    	<View style={styles.lbg}>
-   	<Text style={styles.text1}>WhatsApp Messenger</Text>
+   	<Text style={styles.text1}>WhatsApp Messenger <Text>{selectedValue} </Text></Text>
    	<Text style={styles.text2}>Enter your mobile number to Login or Register</Text>
    	<View style={styles.phno} >
-   	<View style={styles.container}>
-     <Picker
-        selectedValue={selectedValue}
-        style={{ height: 50, width: 100 }}
-        mode="dialog"
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="+91" value="+91" />
-        <Picker.Item label="+92" value="+92" />
-        <Picker.Item label="+94" value="+94" />
-      </Picker>
-      </View>
+	<View style = {styles.dropdown}>
+	<RNPickerSelect
+			onValueChange={function(value){ 
+				setSelectedValue(value)
+			}}
+		
+            items={[
+                { label: '+91', value: '+91' },
+                { label: '+92', value: '+92' },
+                { label: '+93', value: '+93' },
+            ]}
+        />
+	</View>
    	<TextInput 
     placeholder="Your Mobile Number"
-    keyboardType={'numeric'}
+	keyboardType={'numeric'}
+	
    	style={styles.text4}/>
-   	</View>
+	
+	   </View>
    	</View>
 	);
 };
 
 const styles=StyleSheet.create({
+	dropdown:{
+		width: 80,
+		height: 50,
+		borderWidth: 1,
+		borderRadius : 5,
+		borderColor : '#dcdcdc',
+	
+	},
+
 	lbg : {
 		backgroundColor : '#ffffff',
 		marginTop : 10,
@@ -68,6 +82,7 @@ const styles=StyleSheet.create({
 	},
 	text4 :
 	{   
+		alignItems: 'flex-end',
 		fontSize: 18,
 		paddingLeft: 10,
 		borderWidth : 1,
@@ -84,7 +99,10 @@ const styles=StyleSheet.create({
 		marginLeft: 20
 	},
 	 container: {
-	 	flex : 1,
+		 //flex : 1,
+		// flexDirection: 'row',
+		// justifyContent: 'space-between',
+		//width: 0,
     borderWidth: 1,
 		borderColor: '#dcdcdc',
 		borderRadius:5

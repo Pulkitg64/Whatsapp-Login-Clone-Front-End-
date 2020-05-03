@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity,ScrollView } from 'react-native';
 import InputPassword from '../components/InputPassword';
 import NavigationComponent from '../components/NavigationComponent';
 import {MaterialIcons} from '@expo/vector-icons';
@@ -7,7 +7,8 @@ import {withNavigation} from 'react-navigation';
 
 const PasswordScreen = ({navigation}) => {
    return(
-   	<View style={styles.container} >
+	   <ScrollView>
+
    	<View style={styles.ubg} >
    	<TouchableOpacity onPress={() => navigation.navigate('Home')} >
    	<MaterialIcons 
@@ -23,7 +24,8 @@ const PasswordScreen = ({navigation}) => {
    	<View style={styles.lbg}>
    	<NavigationComponent content="I forgot my password" nvgt="Password"/>   	
    	</View>
-	</View>
+	
+	</ScrollView>
 	);
 };
 
